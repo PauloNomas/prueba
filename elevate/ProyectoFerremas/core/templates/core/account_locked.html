@@ -1,0 +1,35 @@
+{% extends "core/base.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      {% load static %}
+    {% block principal %}
+    
+    
+  <link rel="stylesheet" href="{% static 'core/css/login.css' %}">
+  
+
+    <title>login</title>
+</head>
+<body>
+
+  
+    <main>
+
+      <div class="container justify-content-center ">
+      
+        <h1>Tu cuenta a sido bloqueada por muchos intentos fallidos, espera 1 minuto</h1>
+      
+      </div>
+    
+
+
+
+
+
+    </main>
+    
+</body>
+{% endblock principal %}

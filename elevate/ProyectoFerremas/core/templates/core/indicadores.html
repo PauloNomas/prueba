@@ -1,0 +1,53 @@
+{% extends "core/base.html" %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'core/css/indicadores.css' %}">
+    <title>Indicadores Económicos</title>
+</head>
+{% block principal %}
+
+<body>
+    <div class="container">
+        <h1>Indicadores Económicos de Chile</h1>
+        <div class="cards">
+            {% if indicadores %}
+                <div class="card">
+                    <div class="indicator">
+                        <span class="label">UF:</span>
+                        <span class="value">{{ indicadores.uf }}CLP</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="indicator">
+                        <span class="label">Dólar:</span>
+                        <span class="value">{{ indicadores.dolar }} CLP</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="indicator">
+                        <span class="label">Euro:</span>
+                        <span class="value">{{ indicadores.euro }} CLP</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="indicator">
+                        <span class="label">IPC:</span>
+                        <span class="value">{{ indicadores.ipc }}</span>
+                    </div>
+                </div>
+            {% else %}
+                <div class="card">
+                    <div class="indicator">
+                        <span class="value">No se pudieron cargar los datos.</span>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
+{% endblock principal %}

@@ -1,0 +1,107 @@
+{% extends "core/base.html" %}
+
+{% block principal %}
+<style>
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.cart-table {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.cart-item {
+    display: flex;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    align-items: center;
+}
+
+.product-image {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-right: 20px;
+}
+
+.item-details {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.item-details h3 {
+    margin: 0;
+    font-size: 1.2em;
+}
+
+.quantity {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.quantity span {
+    font-size: 1.1em;
+}
+
+.total {
+    text-align: right;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.cart-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.cart-actions .btn {
+    padding: 10px 20px;
+    font-size: 1em;
+}
+</style>
+
+<div class="container">
+    <h1>Carrito de Compras</h1>
+
+    {% if items_carrito %}
+    <div class="cart-table">
+        {% for item in items_carrito %}
+        <div class="cart-item">
+            <img src="{{ item.producto.imagen.url }}" alt="{{ item.producto.nombre }}" class="product-image">
+            <div class="item-details">
+                <h3>{{ item.producto.nombre }}</h3>
+                <p>{{ item.producto.descripcion }}</p>
+                <div class="quantity">
+                    <a href="{% url 'DISMINUIR_CANTIDAD' item.id %}" class="btn btn-secondary btn-sm">-</a>
+                    <span>{{ item.cantidad }}</span>
+                    <a href="{% url 'AUMENTAR_CANTIDAD' item.id %}" class="btn btn-secondary btn-sm">+</a>
+                </div>
+                <p>Precio: ${{ item.producto.precio }}</p>
+                <p>Subtotal: ${{ item.total_item }}</p>
+                <a href="{% url 'ELIMINAR_DEL_CARRITO' item.id %}" class="btn btn-danger btn-sm">Eliminar</a>
+            </div>
+        </div>
+        {% endfor %}
+        <div class="total">
+            <strong>Total: ${{ total_formato }}</strong>
+        </div>
+        <div class="cart-actions">
+            <a href="{% url 'VACIAR_CARRITO' %}" class="btn btn-danger">Vaciar Carrito</a>
+            <a href="{% url 'generar_boleta' %}" class="btn btn-success">Pagar con Webpay</a>
+        </div>
+    </div>
+    {% else %}
+    <p>No hay productos en el carrito.</p>
+    {% endif %}
+</div>
+{% endblock %}

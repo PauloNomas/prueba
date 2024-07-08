@@ -1,0 +1,94 @@
+/* Estilos generales del cuerpo */
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to right, #f7f8fc, #e2e4f0);
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Contenedor principal */
+.container {
+    text-align: center;
+    padding: 20px;
+}
+
+/* Estilo del título principal */
+h1 {
+    color: #34495e;
+    margin-bottom: 30px;
+    font-size: 2.5em;
+    font-weight: 700;
+}
+
+/* Estilo de las tarjetas */
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px; /* Espacio entre las tarjetas */
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Estilo de cada tarjeta */
+.card {
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    padding: 20px;
+    transition: transform 0.3s;
+    width: calc(100% / 4 - 20px); /* Ajuste de tamaño de tarjeta para que quepan 4 por fila con separación */
+    box-sizing: border-box;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+}
+
+/* Estilo de cada indicador */
+.indicator {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Estilo de la etiqueta de cada indicador */
+.label {
+    font-weight: bold;
+    color: #2980b9;
+    font-size: 1.1em;
+}
+
+/* Estilo del valor de cada indicador */
+.value {
+    color: #27ae60;
+    font-size: 1.1em;
+}
+
+/* Estilo responsivo para dispositivos móviles */
+@media (max-width: 900px) {
+    .card {
+        width: calc(100% / 2 - 20px); /* Dos tarjetas por fila en pantallas medianas */
+    }
+}
+
+@media (max-width: 600px) {
+    .card {
+        width: 100%; /* Una tarjeta por fila en pantallas pequeñas */
+        padding: 15px;
+    }
+
+    .indicator {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .label, .value {
+        font-size: 1em;
+    }
+}
